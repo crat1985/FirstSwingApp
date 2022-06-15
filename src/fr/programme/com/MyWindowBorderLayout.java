@@ -1,55 +1,52 @@
 package fr.programme.com;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
-public class MyWindowGridLayout extends JFrame{
+public class MyWindowBorderLayout extends JFrame{
 
 	private static final long serialVersionUID = -4939544011287453046L;
 
-	public MyWindowGridLayout() {
+	public MyWindowBorderLayout() {
 		super("First Application");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(720, 480);
-		this.setLocationRelativeTo(null); //null = bureau //permet de mettre la JFrame au centre de l'écran //mettre ça après avoir défini la taille de la fenêtre
+		this.setLocationRelativeTo(null);
 		this.setResizable(true);
-		this.getMenuBar(); //récupérer la barre de menu (ex : "Fichier")
-		this.getContentPane(); //récupérer le reste
+		this.getMenuBar();
+		this.getContentPane();
 		this.setBackground(Color.BLUE);
 		
 		JPanel contentPane = (JPanel) this.getContentPane();
 		JButton button = new JButton("Hello World");
-		contentPane.add(button);
+		contentPane.add(button,BorderLayout.NORTH);
 		button.setBackground(Color.BLUE);
 		button.setForeground(Color.WHITE);
 		JButton button2 = new JButton("Hello World 2");
-		contentPane.add(button2);
+		contentPane.add(button2, BorderLayout.WEST);
 		button2.setBackground(Color.BLUE);
 		button2.setForeground(Color.WHITE);
+		button2.setPreferredSize(new Dimension(200,0));
 		JCheckBox checkBox = new JCheckBox("YouTube");
-		contentPane.add(checkBox);
+		contentPane.add(checkBox, BorderLayout.SOUTH);
 		checkBox.setBackground(Color.BLUE);
 		checkBox.setForeground(Color.WHITE);
-		JTextField textField = new JTextField();
-		textField.setPreferredSize(new Dimension(120,30));
-		textField.setText("Edit me !");
-//		textField.setEditable(true);
-		contentPane.add(textField);
-		textField.setBackground(Color.BLUE);
-		textField.setForeground(Color.WHITE);
-//		contentPane.setLayout(new FlowLayout());
-//		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT));
-//		contentPane.setLayout(new GridLayout(2, 2)); //2 ligne et 2 colonnes
-		contentPane.setLayout(new GridLayout(2, 2, 20, 20)); //20 px d'espace ENTRE LES ELEMENTS (pas entre les éléments et le bord)
+		JTextArea textArea = new JTextArea();
+		textArea.setPreferredSize(new Dimension(120,30));
+		textArea.setText("Edit me !");
+		contentPane.add(textArea, BorderLayout.EAST);
+		textArea.setBackground(Color.BLUE);
+		textArea.setForeground(Color.WHITE);
+//		contentPane.setLayout(new BorderLayout());
 		contentPane.setBackground(Color.BLUE);
 		
 		
@@ -60,7 +57,7 @@ public class MyWindowGridLayout extends JFrame{
 		UIManager.setLookAndFeel(new NimbusLookAndFeel());
 		
 		
-		MyWindowGridLayout myWindow = new MyWindowGridLayout();
+		MyWindowBorderLayout myWindow = new MyWindowBorderLayout();
 		myWindow.setVisible(true);
 	}
 
